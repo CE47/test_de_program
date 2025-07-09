@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Distance Education Programs | AMA Education System</title>
+  <meta name="description" content="Discover flexible online degrees in BSIT, BSCS, and BSBA. Advance your career with AMA's accredited Distance Education programs.">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  
+  <!-- GSAP for Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Custom Styles -->
+  <style>
+    :root {
+      --maroon: #800000;
+      --light-maroon: #b20000;
+      --dark-maroon: #660000;
+      --gold: #FFD700;
+      --gradient-start: #800000;
+      --gradient-end: #b20000;
+    }
+
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2) format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 700;
+      src: url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYAZ9hiA.woff2) format('woff2');
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
+      overflow-x: hidden;
+    }
+
+    .section-header::after {
+      content: '';
+      display: block;
+      margin: 0.5rem auto 0;
+      width: 4rem;
+      height: 4px;
+      background: linear-gradient(to right, var(--maroon), var(--gold));
+      border-radius: 3px;
+    }
+
+    .frosted {
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(200, 200, 200, 0.15);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    .blob-1 {
+      top: -100px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: var(--maroon);
+    }
+
+    .blob-2 {
+      bottom: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: var(--light-maroon);
+    }
+
+    .blob-3 {
+      top: 50%;
+      left: 20%;
+      width: 200px;
+      height: 200px;
+      background: var(--gold);
+    }
+
+    .animate-fade {
+      animation: fadeInUp 1.2s ease-out both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .text-maroon {
+      color: var(--maroon);
+    }
+
+    .bg-maroon {
+      background-color: var(--maroon);
+    }
+
+    .gradient-bg {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    }
+
+    .card-hover {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+
+    .card-hover:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .stat-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .stat-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 25px 50px -12px rgba(128, 0, 0, 0.25);
+    }
+
+    .testimonial-card {
+      border-left: 4px solid var(--maroon);
+    }
+
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(128, 0, 0, 0.1), rgba(255, 215, 0, 0.1));
+      margin-bottom: 1.5rem;
+      color: var(--maroon);
+      font-size: 28px;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: var(--maroon);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: -10px;
+      background-color: white;
+      border: 4px solid var(--maroon);
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .left {
+      left: 0;
+    }
+
+    .right {
+      left: 50%;
+    }
+
+    .right::after {
+      left: -10px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .timeline::after {
+        left: 31px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+
+      .timeline-item::after {
+        left: 15px;
+      }
+
+      .right {
+        left: 0%;
+      }
+    }
+    
+    /* New Styles for Distance Ed */
+    .program-card {
+      border: 1px solid rgba(128, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .program-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--maroon);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    
+    .program-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .program-card:hover {
+      box-shadow: 0 15px 30px rgba(128, 0, 0, 0.1);
+    }
+    
+    .program-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(128, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      color: var(--maroon);
+      font-size: 32px;
+    }
+    
+    .online-learning-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--maroon);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .distance-ed-benefit {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      background: rgba(128, 0, 0, 0.03);
+    }
+    
+    .distance-ed-benefit i {
+      font-size: 24px;
+      color: var(--maroon);
+      margin-right: 15px;
+      min-width: 40px;
+    }
+    
+    .distance-ed-benefit:hover {
+      background: rgba(128, 0, 0, 0.08);
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+
+<body class="text-gray-900 bg-gradient-to-br from-gray-50 to-gray-100">
+
+<!-- Navigation -->
+<header class="sticky top-0 z-50 bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+    <div class="flex items-center space-x-3">
+      <img src="logo.webp" alt="AMA Logo" class="h-10">
+      <span class="text-xl font-bold text-[var(--maroon)]">AMA Education System</span>
+    </div>
+    <nav class="hidden md:flex items-center gap-8 font-medium">
+      <a href="#hero" style="color: #1f2937; transition: all 0.3s ease; text-decoration: none;" onmouseover="this.style.color='var(--maroon)'; this.style.fontWeight='600'" onmouseout="this.style.color='#1f2937'; this.style.fontWeight='400'">Home</a>
+      <a href="#programs" style="color: #1f2937; transition: all 0.3s ease; text-decoration: none;" onmouseover="this.style.color='var(--maroon)'; this.style.fontWeight='600'" onmouseout="this.style.color='#1f2937'; this.style.fontWeight='400'">Programs</a>
+      <a href="#benefits" style="color: #1f2937; transition: all 0.3s ease; text-decoration: none;" onmouseover="this.style.color='var(--maroon)'; this.style.fontWeight='600'" onmouseout="this.style.color='#1f2937'; this.style.fontWeight='400'">Benefits</a>
+      <a href="#career" style="color: #1f2937; transition: all 0.3s ease; text-decoration: none;" onmouseover="this.style.color='var(--maroon)'; this.style.fontWeight='600'" onmouseout="this.style.color='#1f2937'; this.style.fontWeight='400'">Career Paths</a>
+      <a href="#how-it-works" style="color: #1f2937; transition: all 0.3s ease; text-decoration: none;" onmouseover="this.style.color='var(--maroon)'; this.style.fontWeight='600'" onmouseout="this.style.color='#1f2937'; this.style.fontWeight='400'">How It Works</a>
+      <a href="https://inquire.amaes.edu.ph/inquiry-form/" target="_blank" style="background-color: var(--maroon); color: white; padding: 0.625rem 1.25rem; border-radius: 0.375rem; font-weight: 600; transition: all 0.3s ease; text-decoration: none;" onmouseover="this.style.backgroundColor='var(--dark-maroon)'" onmouseout="this.style.backgroundColor='var(--maroon)'">Enroll Now</a>
+    </nav>
+    <button id="mobile-menu" class="md:hidden text-gray-800">
+      <i class="fas fa-bars text-2xl"></i>
+    </button>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-nav" class="hidden absolute top-full left-0 w-full bg-white shadow-lg py-4 z-50">
+    <div class="flex flex-col items-center space-y-4">
+      <a href="#hero" style="color: #1f2937; font-weight: 500; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--maroon)'" onmouseout="this.style.color='#1f2937'">Home</a>
+      <a href="#programs" style="color: #1f2937; font-weight: 500; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--maroon)'" onmouseout="this.style.color='#1f2937'">Programs</a>
+      <a href="#benefits" style="color: #1f2937; font-weight: 500; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--maroon)'" onmouseout="this.style.color='#1f2937'">Benefits</a>
+      <a href="#career" style="color: #1f2937; font-weight: 500; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--maroon)'" onmouseout="this.style.color='#1f2937'">Career Paths</a>
+      <a href="#how-it-works" style="color: #1f2937; font-weight: 500; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--maroon)'" onmouseout="this.style.color='#1f2937'">How It Works</a>
+      <a href="https://inquire.amaes.edu.ph/inquiry-form/" target="_blank" style="background-color: var(--maroon); color: white; padding: 0.625rem 1.25rem; border-radius: 0.375rem; font-weight: 500; text-decoration: none;">Enroll Now</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="hero" class="relative min-h-screen flex items-center justify-center px-6 py-16 overflow-hidden">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="container max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="z-10 animate-fade">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+        <span class="text-gray-800">Transform Your Future with</span><br>
+        <span style="background-clip: text; -webkit-background-clip: text; color: transparent; background-image: linear-gradient(to right, #800000, #b20000);">Distance Education</span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl">
+        Earn accredited degrees from anywhere in the world. AMA's Distance Education programs offer flexible virtual learning for BSIT, BSCS, and BSBA degrees designed to fit your busy life.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="https://inquire.amaes.edu.ph/inquiry-form/" class="gradient-bg text-white font-bold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition transform hover:scale-[1.03] flex items-center gap-2">
+          <i class="fas fa-graduation-cap"></i> Explore Programs
+        </a>
+        <a href="#programs" class="border-2 border-[var(--maroon)] text-[var(--maroon)] font-bold px-8 py-4 rounded-lg hover:bg-[var(--maroon)] hover:text-white shadow-sm transition transform hover:scale-[1.03] flex items-center gap-2">
+          <i class="fas fa-book-open"></i> View Degrees
+        </a>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm">
+          <i class="fas fa-laptop-house text-[var(--maroon)]"></i>
+          <span>100% Online Learning</span>
+        </div>
+        <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm">
+          <i class="fas fa-calendar-alt text-[var(--maroon)]"></i>
+          <span>Flexible Scheduling</span>
+        </div>
+        <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm">
+          <i class="fas fa-globe-asia text-[var(--maroon)]"></i>
+          <span>Global Recognition</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Item 1 -->
+        <div class="relative" style="margin-bottom: 4rem;">
+        <div class="absolute -top-8 -right-8 w-full h-full rounded-2xl border-4 border-maroon"></div>
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl transform rotate-3">
+            <div class="bg-gradient-to-br from-gray-100 to-white w-full aspect-video flex items-center justify-center">
+            <div class="text-center p-8">
+                <div class="w-16 h-16 bg-maroon rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-clock text-2xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-maroon mb-2">Flexible Learning</h3>
+                <p class="text-gray-700">Study at your own pace and schedule that fits your lifestyle</p>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="relative" style="margin-bottom: 4rem;">
+        <div class="absolute -top-8 -right-8 w-full h-full rounded-2xl border-4 border-maroon"></div>
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl transform rotate-3">
+            <div class="bg-gradient-to-br from-gray-100 to-white w-full aspect-video flex items-center justify-center">
+            <div class="text-center p-8">
+                <div class="w-16 h-16 bg-maroon rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-wallet text-2xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-maroon mb-2">Cost-Effective</h3>
+                <p class="text-gray-700">Save on commuting, housing and other campus-related expenses</p>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="relative" style="margin-bottom: 4rem;">
+        <div class="absolute -top-8 -right-8 w-full h-full rounded-2xl border-4 border-maroon"></div>
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl transform -rotate-3">
+            <div class="bg-gradient-to-br from-gray-100 to-white w-full aspect-video flex items-center justify-center">
+            <div class="text-center p-8">
+                <div class="w-16 h-16 bg-maroon rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-laptop-house text-2xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-maroon mb-2">Learn From Home</h3>
+                <p class="text-gray-700">Access quality education from the comfort of your home</p>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="relative" style="margin-bottom: 4rem;">
+        <div class="absolute -top-8 -right-8 w-full h-full rounded-2xl border-4 border-maroon"></div>
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl transform rotate-2">
+            <div class="bg-gradient-to-br from-gray-100 to-white w-full aspect-video flex items-center justify-center">
+            <div class="text-center p-8">
+                <div class="w-16 h-16 bg-maroon rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-user-graduate text-2xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-maroon mb-2">Same Credentials</h3>
+                <p class="text-gray-700">Earn the same degree as traditional on-campus students</p>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-20 text-white relative overflow-hidden" style="background: linear-gradient(135deg, #660000, #800000);">
+  <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.05\" fill-rule=\"evenodd\"%3E%3Ccircle cx=\"3\" cy=\"3\" r=\"3\"/%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+  
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <h2 class="text-center text-3xl md:text-4xl font-bold mb-12">
+      <i class="fas fa-chart-line mr-3"></i>Distance Education by the Numbers
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="stat-card bg-white/10 p-8 rounded-2xl text-center backdrop-blur-md hover:bg-white/20 transform hover:-translate-y-2 transition-all duration-300 border border-white/10">
+        <i class="fas fa-user-graduate text-3xl mb-4 text-gold"></i>
+        <div class="text-4xl md:text-5xl font-bold mb-3" data-count="95">0%</div>
+        <div class="text-base md:text-lg font-medium">Graduation Rate</div>
+        <p class="text-sm text-white/80 mt-2">Higher than national average</p>
+      </div>
+      
+      <div class="stat-card bg-white/10 p-8 rounded-2xl text-center backdrop-blur-md hover:bg-white/20 transform hover:-translate-y-2 transition-all duration-300 border border-white/10">
+        <i class="fas fa-globe text-3xl mb-4 text-gold"></i>
+        <div class="text-4xl md:text-5xl font-bold mb-3" data-count="40">0+</div>
+        <div class="text-base md:text-lg font-medium">Countries</div>
+        <p class="text-sm text-white/80 mt-2">Students from around the world</p>
+      </div>
+      
+      <div class="stat-card bg-white/10 p-8 rounded-2xl text-center backdrop-blur-md hover:bg-white/20 transform hover:-translate-y-2 transition-all duration-300 border border-white/10">
+        <i class="fas fa-briefcase text-3xl mb-4 text-gold"></i>
+        <div class="text-4xl md:text-4xl font-bold mb-3" data-count="87">0%</div>
+        <div class="text-base md:text-lg font-medium">Employed Graduates</div>
+        <p class="text-sm text-white/80 mt-2">Within 6 months of graduation</p>
+      </div>
+      
+      <div class="stat-card bg-white/10 p-8 rounded-2xl text-center backdrop-blur-md hover:bg-white/20 transform hover:-translate-y-2 transition-all duration-300 border border-white/10">
+        <i class="fas fa-calendar-alt text-3xl mb-4 text-gold"></i>
+        <div class="text-4xl md:text-5xl font-bold mb-3" data-count="24">0/7</div>
+        <div class="text-base md:text-lg font-medium">Accessibility</div>
+        <p class="text-sm text-white/80 mt-2">Learn anytime, anywhere</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Animate count up when stats are in view
+    const stats = document.querySelectorAll('[data-count]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = entry.target;
+          const countTo = parseInt(target.getAttribute('data-count'));
+          let count = 0;
+          const duration = 2000;
+          const increment = countTo / (duration / 16);
+          
+          function updateCount() {
+            count += increment;
+            if (count < countTo) {
+              target.textContent = Math.floor(count) + (target.textContent.includes('%') ? '%' : '+');
+              requestAnimationFrame(updateCount);
+            } else {
+              target.textContent = countTo + (target.textContent.includes('%') ? '%' : '+');
+            }
+          }
+          
+          updateCount();
+          observer.unobserve(target);
+        }
+      });
+    }, {threshold: 0.5});
+
+    stats.forEach(stat => observer.observe(stat));
+  </script>
+</section>
+
+<!-- Programs Section -->
+<section id="programs" class="relative py-24 px-6 text-center bg-gray-50 text-gray-800 overflow-hidden">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold section-header text-maroon mb-6">Our Distance Education Programs</h2>
+    <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-16">Choose from our accredited online degree programs designed for career advancement and flexibility</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-left relative z-10">
+      <!-- BSIT Card -->
+      <div class="frosted p-8 rounded-2xl card-hover program-card">
+        <div class="program-icon">
+          <i class="fas fa-laptop-code"></i>
+        </div>
+        <h3 class="font-bold text-xl text-center text-[var(--maroon)] mb-4">BS in Information Technology</h3>
+        <p class="text-gray-700 text-center mb-6">Develop cutting-edge technical skills for today's digital economy</p>
+        <ul class="space-y-2 pl-4">
+          <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Cybersecurity & Networking</li>
+          <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Cloud Computing</li>
+          <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Software Development</li>
+          <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Database Management</li>
+          <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> IT Project Management</li>
+        </ul>
+        <div class="mt-6 text-center">
+          <a href="https://amaes.edu.ph/" class="inline-block bg-[var(--maroon)] text-white px-6 py-2 rounded-lg font-medium hover:bg-[var(--dark-maroon)] transition">View Curriculum</a>
+        </div>
+        <div class="online-learning-badge">100% ONLINE</div>
+      </div>
+      
+      <!-- BSCS Card -->
+      <div class="frosted p-8 rounded-2xl card-hover program-card">
+        <div class="program-icon">
+          <i class="fas fa-microchip"></i>
+        </div>
+        <h3 class="font-bold text-xl text-center text-[var(--maroon)] mb-4">BS in Computer Science</h3>
+        <p class="text-gray-700 text-center mb-6">Master the foundations of computing and software engineering</p>
+        <ul class="space-y-2 pl-4">
+          <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Algorithms & Data Structures</li>
+          <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Artificial Intelligence</li>
+          <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Software Engineering</li>
+          <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Machine Learning</li>
+          <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Computer Architecture</li>
+        </ul>
+        <div class="mt-6 text-center">
+          <a href="https://amaes.edu.ph/" class="inline-block bg-[var(--maroon)] text-white px-6 py-2 rounded-lg font-medium hover:bg-[var(--dark-maroon)] transition">View Curriculum</a>
+        </div>
+        <div class="online-learning-badge">100% ONLINE</div>
+      </div>
+      
+      <!-- BSBA Card -->
+      <div class="frosted p-8 rounded-2xl card-hover program-card">
+        <div class="program-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3 class="font-bold text-xl text-center text-[var(--maroon)] mb-4">BS in Business Administration</h3>
+        <p class="text-gray-700 text-center mb-6">Develop essential business skills for leadership roles</p>
+        <ul class="space-y-2 pl-4">
+          <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Strategic Management</li>
+          <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Marketing & Sales</li>
+          <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Financial Analysis</li>
+          <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Entrepreneurship</li>
+          <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Operations Management</li>
+        </ul>
+        <div class="mt-6 text-center">
+          <a href="https://amaes.edu.ph/" class="inline-block bg-[var(--maroon)] text-white px-6 py-2 rounded-lg font-medium hover:bg-[var(--dark-maroon)] transition">View Curriculum</a>
+        </div>
+        <div class="online-learning-badge">100% ONLINE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits Section -->
+<section id="benefits" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-maroon mb-4">Why Choose Distance Education?</h2>
+    <p class="text-lg text-center text-gray-700 max-w-3xl mx-auto mb-16">Experience the flexibility and advantages of virtual learning with AMA</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+      <div class="distance-ed-benefit">
+        <i class="fas fa-calendar-alt"></i>
+        <div>
+          <h3 class="font-bold text-lg mb-1">Flexible Schedule</h3>
+          <p class="text-gray-700">Study at your own pace around work and family commitments.</p>
+        </div>
+      </div>
+      
+      <div class="distance-ed-benefit">
+        <i class="fas fa-globe"></i>
+        <div>
+          <h3 class="font-bold text-lg mb-1">Global Access</h3>
+          <p class="text-gray-700">Access your courses from anywhere in the world.</p>
+        </div>
+      </div>
+      
+      <div class="distance-ed-benefit">
+        <i class="fas fa-money-bill-wave"></i>
+        <div>
+          <h3 class="font-bold text-lg mb-1">Cost Effective</h3>
+          <p class="text-gray-700">Save on commuting, housing, and other campus expenses.</p>
+        </div>
+      </div>
+      
+      <div class="distance-ed-benefit">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <div>
+          <h3 class="font-bold text-lg mb-1">Expert Faculty</h3>
+          <p class="text-gray-700">Learn from industry professionals with real-world experience.</p>
+        </div>
+      </div>
+      
+      <div class="distance-ed-benefit">
+        <i class="fas fa-network-wired"></i>
+        <div>
+          <h3 class="font-bold text-lg mb-1">Networking Opportunities</h3>
+          <p class="text-gray-700">Connect with peers and professionals worldwide.</p>
+        </div>
+      </div>
+      
+      <div class="distance-ed-benefit">
+        <i class="fas fa-certificate"></i>
+        <div>
+          <h3 class="font-bold text-lg mb-1">Accredited Degrees</h3>
+          <p class="text-gray-700">Earn the same respected credentials as on-campus students.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Career Paths Section -->
+<section id="career" class="py-24 bg-gradient-to-br from-gray-50 to-gray-100">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-maroon mb-4">Career Opportunities</h2>
+    <p class="text-lg text-center text-gray-700 max-w-3xl mx-auto mb-16">Graduate with the skills needed for these in-demand roles</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- BSIT Careers -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+        <div class="gradient-bg p-6">
+          <h3 class="text-xl font-bold text-white">BSIT Graduates</h3>
+          <p class="text-white/90">Technical Career Paths</p>
+        </div>
+        <div class="p-6">
+          <ul class="space-y-3">
+            <li class="flex items-start"><i class="fas fa-chevron-right text-[var(--maroon)] mt-1 mr-2"></i> Cybersecurity Analyst</li>
+            <li class="flex items-start"><i class="fas fa-chevron-right text-[var(--maroon)] mt-1 mr-2"></i> Cloud Solutions Architect</li>
+            <li class="flex items-start"><i class="fas fa-chevron-right text-[var(--maroon)] mt-1 mr-2"></i> Software Developer</li>
+            <li class="flex items-start"><i class="fas fa-chevron-right text-[var(--maroon)] mt-1 mr-2"></i> IT Project Manager</li>
+            <li class="flex items-start"><i class="fas fa-chevron-right text-[var(--maroon)] mt-1 mr-2"></i> Systems Administrator</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- BSCS Careers -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+        <div class="gradient-bg p-6">
+          <h3 class="text-xl font-bold text-white">BSCS Graduates</h3>
+          <p class="text-white/90">Computing & Development Roles</p>
+        </div>
+        <div class="p-6">
+          <ul class="space-y-3">
+            <li class="flex items-start"><i class="fas fa-chevron-right text-[var(--maroon)] mt-1 mr-2"></i> Software Engineer</li>
+            <li class="flex items-start"><i class="fas fa-chevron-right text-[var(--maroon)] mt-1 mr-2"></i> Data Scientist</li>
+            <li class="flex items-start"><i class="fas fa-chevron-right text-[var(--maroon)] mt-1 mr-2"></i> AI/Machine Learning Engineer</li>
+            <li class="flex items-start"><i class="fas fa-chevron-right text-[var(--maroon)] mt-1 mr-2"></i> Full Stack Developer</li>
+            <li class="flex items-start"><i class="fas fa-chevron-right text-[var(--maroon)] mt-1 mr-2"></i> Research Scientist</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- BSBA Careers -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+        <div class="gradient-bg p-6">
+          <h3 class="text-xl font-bold text-white">BSBA Graduates</h3>
+          <p class="text-white/90">Business Leadership Roles</p>
+        </div>
+        <div class="p-6">
+          <ul class="space-y-3">
+            <li class="flex items-start"><i class="fas fa-chevron-right text-[var(--maroon)] mt-1 mr-2"></i> Business Development Manager</li>
+            <li class="flex items-start"><i class="fas fa-chevron-right text-[var(--maroon)] mt-1 mr-2"></i> Marketing Director</li>
+            <li class="flex items-start"><i class="fas fa-chevron-right text-[var(--maroon)] mt-1 mr-2"></i> Financial Analyst</li>
+            <li class="flex items-start"><i class="fas fa-chevron-right text-[var(--maroon)] mt-1 mr-2"></i> Operations Manager</li>
+            <li class="flex items-start"><i class="fas fa-chevron-right text-[var(--maroon)] mt-1 mr-2"></i> Entrepreneur/Startup Founder</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works Section -->
+<section id="how-it-works" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-maroon mb-4">How Distance Education Works</h2>
+    <p class="text-lg text-center text-gray-700 max-w-3xl mx-auto mb-16">Our streamlined process makes virtual learning simple and effective</p>
+    
+    <div class="timeline">
+      <!-- Step 1 -->
+      <div class="timeline-item left">
+        <div class="frosted p-6 rounded-xl">
+          <div class="flex items-center mb-3">
+            <div class="bg-[var(--maroon)] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-3">1</div>
+            <h3 class="font-bold text-lg">Apply Online</h3>
+          </div>
+          <p class="text-gray-700">Complete our simple application form and submit required documents digitally. No entrance exams required.</p>
+        </div>
+      </div>
+      
+      <!-- Step 2 -->
+      <div class="timeline-item right">
+        <div class="frosted p-6 rounded-xl">
+          <div class="flex items-center mb-3">
+            <div class="bg-[var(--maroon)] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-3">2</div>
+            <h3 class="font-bold text-lg">Access Learning Platform</h3>
+          </div>
+          <p class="text-gray-700">Receive login credentials for our state-of-the-art learning management system with all your course materials.</p>
+        </div>
+      </div>
+      
+      <!-- Step 3 -->
+      <div class="timeline-item left">
+        <div class="frosted p-6 rounded-xl">
+          <div class="flex items-center mb-3">
+            <div class="bg-[var(--maroon)] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-3">3</div>
+            <h3 class="font-bold text-lg">Engage in Courses</h3>
+          </div>
+          <p class="text-gray-700">Participate in live virtual classes, watch recorded lectures, complete assignments, and join discussions on your schedule.</p>
+        </div>
+      </div>
+      
+      <!-- Step 4 -->
+      <div class="timeline-item right">
+        <div class="frosted p-6 rounded-xl">
+          <div class="flex items-center mb-3">
+            <div class="bg-[var(--maroon)] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-3">4</div>
+            <h3 class="font-bold text-lg">Receive Support</h3>
+          </div>
+          <p class="text-gray-700">Get assistance from dedicated instructors, academic advisors, and technical support throughout your journey.</p>
+        </div>
+      </div>
+      
+      <!-- Step 5 -->
+      <div class="timeline-item left">
+        <div class="frosted p-6 rounded-xl">
+          <div class="flex items-center mb-3">
+            <div class="bg-[var(--maroon)] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-3">5</div>
+            <h3 class="font-bold text-lg">Graduate & Advance</h3>
+          </div>
+          <p class="text-gray-700">Complete your degree requirements and graduate with the same credentials as on-campus students, ready for career advancement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-maroon mb-4">Student Success Stories</h2>
+    <p class="text-lg text-center text-gray-700 max-w-3xl mx-auto mb-16">Hear from our distance education graduates</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card bg-white p-8 rounded-xl">
+        <div class="flex items-center mb-6">
+          <div>
+            <h4 class="font-bold text-lg">Sarah Johnson</h4>
+            <p class="text-gray-600">BSIT Graduate, Software Developer</p>
+          </div>
+        </div>
+        <p class="text-gray-700 italic">"Completing my BSIT through AMA's distance education program allowed me to work full-time while advancing my career. The flexibility was essential, and I received the same quality education as on-campus students."</p>
+        <div class="mt-4 text-yellow-400">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+      </div>
+      
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card bg-white p-8 rounded-xl">
+        <div class="flex items-center mb-6">
+          <div>
+            <h4 class="font-bold text-lg">David Chen</h4>
+            <p class="text-gray-600">BSCS Graduate, Data Scientist</p>
+          </div>
+        </div>
+        <p class="text-gray-700 italic">"As an international student, AMA's distance education program gave me access to quality education without relocating. The online platform was intuitive, and faculty support exceeded my expectations."</p>
+        <div class="mt-4 text-yellow-400">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+      </div>
+      
+      <!-- Testimonial 3 -->
+      <div class="testimonial-card bg-white p-8 rounded-xl">
+        <div class="flex items-center mb-6">
+          <div>
+            <h4 class="font-bold text-lg">Maria Rodriguez</h4>
+            <p class="text-gray-600">BSBA Graduate, Marketing Manager</p>
+          </div>
+        </div>
+        <p class="text-gray-700 italic">"Balancing motherhood and career aspirations seemed impossible until I discovered AMA's distance education. The BSBA program fit perfectly into my busy life and opened doors to leadership positions."</p>
+        <div class="mt-4 text-yellow-400">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+      </div>
+
+      <!-- Testimonial 4 -->
+      <div class="testimonial-card bg-white p-8 rounded-xl">
+        <div class="flex items-center mb-6">
+          <div>
+            <h4 class="font-bold text-lg">James Wilson</h4>
+            <p class="text-gray-600">BSIT Graduate, Cybersecurity Specialist</p>
+          </div>
+        </div>
+        <p class="text-gray-700 italic">"The distance education format allowed me to immediately apply what I learned to my IT job. The practical approach and industry-relevant curriculum made all the difference in my career progression."</p>
+        <div class="mt-4 text-yellow-400">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section style="padding-top: 5rem; padding-bottom: 5rem; padding-left: 1.5rem; padding-right: 1.5rem; background: linear-gradient(to right, #660000, #800000); text-align: center;">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Start Your Educational Journey?</h2>
+    <p class="text-white text-lg max-w-2xl mx-auto mb-10">Take the first step toward advancing your career with our flexible distance education programs.</p>
+    
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <a href="https://inquire.amaes.edu.ph/inquiry-form/" 
+         style="position: relative; 
+                overflow: hidden;
+                background: white;
+                color: var(--maroon);
+                padding: 1.25rem 2.5rem;
+                border-radius: 0.75rem;
+                font-size: 1.125rem;
+                font-weight: 700;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                transition: all 500ms;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.75rem;
+                border: 2px solid rgba(128, 0, 0, 0.2);"
+         onmouseover="this.style.transform='translateY(-8px) scale(1.05)'; 
+                      this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.25)';
+                      this.style.borderColor='#800000';"
+         onmouseout="this.style.transform='translateY(0) scale(1)';
+                     this.style.boxShadow='0 10px 15px -3px rgba(0, 0, 0, 0.1)';
+                     this.style.borderColor='rgba(128, 0, 0, 0.2)';">
+        <i class="fas fa-info-circle"></i>
+        <span>Request Information</span>
+      </a>
+      
+      <a href="https://inquire.amaes.edu.ph/inquiry-form/" 
+         style="position: relative; overflow: hidden; background: var(--dark-maroon); color: white; padding: 1.25rem 2.5rem; border-radius: 0.75rem; font-size: 1.125rem; font-weight: 700; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: center; gap: 0.75rem; transition: all 500ms; transform: translateY(0); cursor: pointer;"
+         onmouseover="this.style.transform='translateY(-8px) scale(1.05)'; this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.25)'"
+         onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 6px -1px rgba(0, 0, 0, 0.1)'">
+        <i class="fas fa-user-graduate"></i>
+        <span>Apply Now</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-24 bg-white">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-maroon mb-4">Frequently Asked Questions</h2>
+    <p class="text-lg text-center text-gray-700 max-w-3xl mx-auto mb-16">Get answers about our Distance Education programs</p>
+    
+    <div class="space-y-6">
+      <!-- FAQ 1 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden">
+        <button class="faq-question w-full text-left p-6 font-bold text-lg flex justify-between items-center">
+          <span>Are distance education degrees recognized by employers?</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer p-6 pt-0 text-gray-700 hidden">
+          Yes! AMA's distance education programs are fully accredited and result in the same respected degrees as our on-campus programs. Employers recognize the quality and rigor of our online degrees.
+        </div>
+      </div>
+      
+      <!-- FAQ 2 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden">
+        <button class="faq-question w-full text-left p-6 font-bold text-lg flex justify-between items-center">
+          <span>How much time do I need to dedicate weekly?</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer p-6 pt-0 text-gray-700 hidden">
+          Most students dedicate 15-20 hours per week per course. Our flexible format allows you to complete coursework when it fits your schedule, making it ideal for working professionals.
+        </div>
+      </div>
+      
+      <!-- FAQ 3 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden">
+        <button class="faq-question w-full text-left p-6 font-bold text-lg flex justify-between items-center">
+          <span>What technology do I need for virtual learning?</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer p-6 pt-0 text-gray-700 hidden">
+          You'll need a reliable computer with internet access. Most courses are compatible with Windows or macOS systems. Specific software requirements vary by program but are clearly listed before each term.
+        </div>
+      </div>
+      
+      <!-- FAQ 4 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden">
+        <button class="faq-question w-full text-left p-6 font-bold text-lg flex justify-between items-center">
+          <span>Can international students enroll in distance education?</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer p-6 pt-0 text-gray-700 hidden">
+          Absolutely! Our distance education programs are available to students worldwide. International students enjoy the same access to courses, faculty, and resources as domestic students.
+        </div>
+      </div>
+      
+      <!-- FAQ 5 -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden">
+        <button class="faq-question w-full text-left p-6 font-bold text-lg flex justify-between items-center">
+          <span>How do exams work in distance education?</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer p-6 pt-0 text-gray-700 hidden">
+          Exams are typically administered through our secure online platform with remote proctoring. Some programs may require in-person exams which can be arranged at testing centers worldwide.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section style="padding-top: 5rem; padding-bottom: 5rem; background-image: linear-gradient(to bottom right, #660000, #800000); color: white; text-align: center; position: relative; overflow: hidden;">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  
+  <div class="max-w-4xl mx-auto px-6 relative z-10">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Transform Your Future Through Education</h2>
+    <p class="text-xl max-w-2xl mx-auto mb-10 text-white/90">Join thousands of successful graduates who advanced their careers with AMA's Distance Education programs.</p>
+    
+    <div class="flex flex-wrap justify-center gap-6">
+      <a href="https://inquire.amaes.edu.ph/inquiry-form/" 
+         style="display: inline-block; 
+                background-color: white; 
+                color: var(--maroon);
+                font-weight: bold;
+                padding: 2rem 1rem;
+                border-radius: 0.5rem;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+                transition: all 0.3s ease;
+                transform: scale(1);
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;"
+         onmouseover="this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'; this.style.transform='scale(1.03)'"
+         onmouseout="this.style.boxShadow='0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'; this.style.transform='scale(1)'">
+          <i class="fas fa-info-circle"></i> Request Program Details
+      </a>
+
+      <a href="https://inquire.amaes.edu.ph/inquiry-form/" 
+         style="display: inline-block; 
+                background-color: #ff0000; 
+                color: #ffffff;
+                font-weight: bold;
+                padding: 1rem 2rem;
+                border-radius: 0.5rem;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+                transition: all 0.3s ease;
+                transform: scale(1);
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;"
+         onmouseover="this.style.boxShadow='0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'; this.style.transform='scale(1.03)'"
+         onmouseout="this.style.boxShadow='0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'; this.style.transform='scale(1)'">
+          <i class="fas fa-user-graduate"></i> Apply Now
+      </a>
+    </div>
+
+    <div class="mt-12 flex flex-wrap justify-center gap-8">
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/amaeducsystem" class="hover:opacity-80 transition">
+        <i class="fab fa-facebook text-2xl text-white"></i>
+      </a>
+      
+      <!-- Tiktok -->
+      <a href="https://www.tiktok.com/@amaeducsystem" class="hover:opacity-80 transition">
+        <i class="fab fa-tiktok text-2xl text-white"></i>
+      </a>
+      
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/amaeducsystem/" class="hover:opacity-80 transition">
+        <i class="fab fa-instagram text-2xl text-white"></i>
+      </a>
+      
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/school/ama-university/" class="hover:opacity-80 transition">
+        <i class="fab fa-linkedin text-2xl text-white"></i>
+      </a>
+      
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@amaeducsystem" class="hover:opacity-80 transition">
+        <i class="fab fa-youtube text-2xl text-white"></i>
+      </a>
+    </div>
+    
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300 py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center space-x-3 mb-4">
+          <img src="logo.webp" alt="AMA Logo" class="h-10">
+          <span class="text-lg font-bold text-white">AMA Education System</span>
+        </div>
+        <p class="text-sm mb-4">Pioneering quality distance education in the Philippines since 1980.</p>
+        <p class="text-sm">CHED Recognized • TESDA Accredited • ISO Certified</p>
+      </div>
+      
+      <div>
+        <h4 class="text-white font-bold mb-4">Distance Education</h4>
+        <ul class="space-y-2">
+          <li><a href="#programs" class="hover:text-white transition">Programs</a></li>
+          <li><a href="#benefits" class="hover:text-white transition">Benefits</a></li>
+          <li><a href="#how-it-works" class="hover:text-white transition">How It Works</a></li>
+          <li><a href="#career" class="hover:text-white transition">Career Outcomes</a></li>
+          <li><a href="#" class="hover:text-white transition">Admissions</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-white font-bold mb-4">Programs</h4>
+        <ul class="space-y-2">
+          <li><a href="https://connect.amaes.edu.ph/bsit/" class="hover:text-white transition">BS Information Technology</a></li>
+          <li><a href="https://amaes.edu.ph/" class="hover:text-white transition">BS Computer Science</a></li>
+          <li><a href="https://connect.amaes.edu.ph/business/" class="hover:text-white transition">BS Business Administration</a></li>
+          <li><a href="https://amaes.edu.ph/" class="hover:text-white transition">Short Courses</a></li>
+          <li><a href="https://amaes.edu.ph/" class="hover:text-white transition">Professional Certificates</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-white font-bold mb-4">Contact Information</h4>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+            <span>AMA Building, 59 Panay Avenue, Quezon City</span>
+          </li>
+          <li class="flex items-start">
+            <a href="tel:+6328737-5545" class="flex items-center hover:text-[var(--maroon)] transition-colors">
+              <i class="fas fa-phone-alt mt-1 mr-3"></i>
+              <span>(02) 8737-5545</span>
+            </a>
+          </li>
+          <li class="flex items-start">
+            <a href="mailto:online@amaes.edu.ph" class="flex items-center hover:text-[var(--maroon)] transition-colors">
+              <i class="fas fa-envelope mt-1 mr-3"></i>
+              <span>online@amaes.edu.ph</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 mt-12 pt-8 text-sm text-center">
+      <p>© 2025 AMA Education System. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- GSAP Scroll Animations -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu');
+    const mobileNav = document.getElementById('mobile-nav');
+    
+    mobileMenuBtn.addEventListener('click', function() {
+      mobileNav.classList.toggle('hidden');
+    });
+    
+    // FAQ accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        const icon = this.querySelector('i');
+        
+        if (answer.classList.contains('hidden')) {
+          answer.classList.remove('hidden');
+          icon.classList.remove('fa-chevron-down');
+          icon.classList.add('fa-chevron-up');
+        } else {
+          answer.classList.add('hidden');
+          icon.classList.remove('fa-chevron-up');
+          icon.classList.add('fa-chevron-down');
+        }
+      });
+    });
+    
+    // Initialize GSAP animations
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Animate elements on scroll
+    gsap.utils.toArray('.animate-on-scroll').forEach(element => {
+      gsap.fromTo(element, {
+        opacity: 0,
+        y: 40
+      }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: element,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        },
+        ease: 'power2.out'
+      });
+    });
+    
+    // Animate cards on hover
+    gsap.utils.toArray('.card-hover').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+          y: -10,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          y: 0,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
